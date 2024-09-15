@@ -1,54 +1,137 @@
+You said:
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bara's Birthday Party</title>
+    <title>Bara's 1st Birthday Invitation</title>
     <style>
       body {
         font-family: "Comic Sans MS", cursive, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #e0f7fa;
-        background-image: linear-gradient(90deg, #ffffff 50%, #b3e5fc 50%);
-        background-size: 80px 80px;
-        color: #333;
+        background-color: #a1f4da;
+        color: #1f1f23;
         text-align: center;
         overflow-x: hidden;
       }
-
       h1 {
         font-size: 3rem;
-        color: #ffeb3b;
+      }
+      p {
+        font-size: 1.2rem;
+        color: #555;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px;
+        min-height: 200vh; /* Memastikan ada cukup konten untuk scroll */
+      }
+      .photo {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        transition: transform 0.5s ease;
+        animation: pop 1s ease forwards;
+      }
+      .photo:hover {
+        transform: scale(1.1); /* Membesar saat di-hover */
+      }
+      .gallery {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 20px 0;
+      }
+      .gallery img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.5s ease;
+        animation: slideIn 1s ease forwards;
+      }
+      .gallery img:hover {
+        transform: scale(1.1); /* Membesar saat di-hover */
       }
 
-      .container {
-        padding: 20px;
-        min-height: 100vh;
+      /* Animasi Masuk untuk Foto */
+      @keyframes pop {
+        0% {
+          transform: scale(0.5);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        0% {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .rundown {
+        text-align: left;
+        font-size: 1.1rem;
+        margin-top: 20px;
+      }
+      .rundown li {
+        list-style: none;
+        padding: 10px;
         position: relative;
       }
-
-      .balloons {
-        position: fixed;
-        bottom: 0;
-        left: 0;
+      .rundown li::before {
+        content: "●";
+        color: #ff69b4;
+        position: absolute;
+        left: -25px;
+        top: 10px;
+      }
+      .rundown li::after {
+        content: "";
+        width: 2px;
+        height: 40px;
+        background-color: #ff69b4;
+        position: absolute;
+        left: -15px;
+        top: 30px;
+      }
+      .rundown li:last-child::after {
+        display: none;
+      }
+      iframe {
         width: 100%;
-        height: 100%;
-        overflow: hidden;
-        z-index: -1;
+        height: 400px;
+        border: none;
+        margin-top: 20px;
+        border-radius: 10px;
       }
 
-      /* Balloon Animation */
+      /* Balon CSS */
       .balloon {
         position: absolute;
-        bottom: -100px;
+        bottom: -150px;
         width: 60px;
         height: 80px;
-        background-color: var(--balloon-color);
+        background-color: #ff69b4;
         border-radius: 50%;
         animation: fly 10s linear infinite;
       }
-
       .balloon::before {
         content: "";
         position: absolute;
@@ -56,77 +139,102 @@
         left: 50%;
         width: 2px;
         height: 40px;
-        background-color: var(--balloon-color);
-        transform: translateX(-50%);
+        background-color: #ff69b4;
       }
 
       @keyframes fly {
         0% {
-          bottom: -100px;
-          transform: translateX(0);
-        }
-        50% {
-          transform: translateX(-30px);
+          transform: translateY(100vh);
         }
         100% {
-          bottom: 120vh;
-          transform: translateX(30px);
+          transform: translateY(-100vh);
         }
       }
     </style>
   </head>
   <body>
+    <!-- Music Background -->
+    <audio autoplay loop>
+      <source src="your-music-file.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- Halaman Undangan -->
     <div class="container">
-      <!-- Flying Balloons -->
-      <div class="balloons" id="balloons-container"></div>
-      <h1>Bara's Birthday Party</h1>
-      <p>Get ready to celebrate!</p>
+      <h1>Welcome to Bara's 1st Birthday!</h1>
+      <img src="your-photo-file.jpg" alt="Bara's Birthday" class="photo" />
+      <p>You are invited to celebrate this special day with us.</p>
+
+      <!-- Detail Acara -->
+      <h2>Birthday Party Details</h2>
+      <p>Date: 14 September 2024</p>
+      <p>Time: 5:00 PM</p>
+      <p>Location: Happy Garden, City Park</p>
+      <p>Dress code: Fun and colorful!</p>
+
+      <!-- Rundown Acara -->
+      <h2>Rundown Acara</h2>
+      <ul class="rundown">
+        <li>17:00 - Pembukaan</li>
+        <li>17:10 - Doa Bersama</li>
+        <li>17:30 - Potong Kue</li>
+        <li>18:00 - Games dan Hiburan</li>
+        <li>19:00 - Penutupan</li>
+      </ul>
+
+      <!-- Galeri Foto Bara -->
+      <h2>Foto-foto Bara</h2>
+      <div class="gallery">
+        <img src="bara-photo1.jpg" alt="Bara 1" />
+        <img src="bara-photo2.jpg" alt="Bara 2" />
+        <img src="bara-photo3.jpg" alt="Bara 3" />
+        <img src="bara-photo4.jpg" alt="Bara 4" />
+      </div>
+
+      <!-- Google Maps -->
+      <h2>Lokasi Acara</h2>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.907473482815!2d90.36542121535735!3d23.759533594852203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf53f28b7fb7%3A0x2f4b9bbca6cfb64d!2sCity%20Park!5e0!3m2!1sen!2sbd!4v1625806199936!5m2!1sen!2sbd"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+
+      <!-- Konten Tambahan untuk Scroll -->
+      <div style="margin-top: 100px">
+        <h2>More Fun Activities!</h2>
+        <p>We will have face painting, balloon animals, and much more!</p>
+        <p>Don't miss out on the fun and the cake!</p>
+        <p>Bring your favorite toys and games to play with your friends!</p>
+        <p>We can't wait to see you there!</p>
+      </div>
     </div>
 
+    <!-- Balon -->
+    <div class="balloon" style="left: 10%; background-color: #ff69b4"></div>
+    <div class="balloon" style="left: 30%; background-color: #ffd700"></div>
+    <div class="balloon" style="left: 50%; background-color: #c40ea8"></div>
+    <div class="balloon" style="left: 70%; background-color: #ff4500"></div>
+    <div class="balloon" style="left: 90%; background-color: #4169e1"></div>
+    <div class="balloon" style="left: 10%; background-color: #0a15ed"></div>
+    <div class="balloon" style="left: 30%; background-color: #c084da"></div>
+    <div class="balloon" style="left: 50%; background-color: #010d09"></div>
+
     <script>
-      // Function to generate balloons dynamically
-      function generateBalloons() {
-        const balloonContainer = document.getElementById("balloons-container");
-        const colors = [
-          "#ff69b4",
-          "#ffb6c1",
-          "#ff4500",
-          "#32cd32",
-          "#ffd700",
-          "#adff2f",
-          "#00fa9a",
-          "#00ff00",
-          "#40e0d0",
-          "#1e90ff",
-          "#4169e1",
-          "#9370db",
-          "#8a2be2",
-          "#dda0dd",
-          "#da70d6",
-          "#ee82ee",
-          "#ffc0cb",
-          "#f08080",
-        ];
+      // JavaScript to randomly generate balloons with different speeds and sizes
+      document.addEventListener("DOMContentLoaded", function () {
+        const balloons = document.querySelectorAll(".balloon");
 
-        for (let i = 0; i < 50; i++) {
-          const balloon = document.createElement("div");
-          const randomColor = colors[Math.floor(Math.random() * colors.length)];
-          const randomLeft = Math.random() * 100 + "vw";
-          const randomDelay = Math.random() * 5 + "s";
-          const randomDuration = Math.random() * 5 + 5 + "s";
+        balloons.forEach((balloon) => {
+          // Random speed between 5s and 10s for floating effect
+          let randomSpeed = Math.random() * (10 - 5) + 5;
+          balloon.style.animationDuration = ${randomSpeed}s;
 
-          balloon.classList.add("balloon");
-          balloon.style.setProperty("--balloon-color", randomColor);
-          balloon.style.left = randomLeft;
-          balloon.style.animationDelay = randomDelay;
-          balloon.style.animationDuration = randomDuration;
-
-          balloonContainer.appendChild(balloon);
-        }
-      }
-
-      // Panggil fungsi untuk memulai animasi balon saat halaman dimuat
-      window.onload = generateBalloons;
+          // Random size of balloons
+          let randomSize = Math.random() * (80 - 50) + 50;
+          balloon.style.width = ${randomSize}px;
+          balloon.style.height = ${randomSize * 1.3}px;
+        });
+      });
     </script>
   </body>
 </html>
