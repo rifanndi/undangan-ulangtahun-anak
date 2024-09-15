@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bara's Birthday Party</title>
+    <style>
+      body {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #e0f7fa;
+        background-image: linear-gradient(90deg, #ffffff 50%, #b3e5fc 50%);
+        background-size: 80px 80px;
+        color: #333;
+        text-align: center;
+        overflow-x: hidden;
+      }
+
+      h1 {
+        font-size: 3rem;
+        color: #ffeb3b;
+      }
+
+      .container {
+        padding: 20px;
+        min-height: 100vh;
+        position: relative;
+      }
+
+      .balloons {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+      }
+
+      /* Balloon Animation */
+      .balloon {
+        position: absolute;
+        bottom: -100px;
+        width: 60px;
+        height: 80px;
+        background-color: var(--balloon-color);
+        border-radius: 50%;
+        animation: fly 10s linear infinite;
+      }
+
+      .balloon::before {
+        content: "";
+        position: absolute;
+        top: 70px;
+        left: 50%;
+        width: 2px;
+        height: 40px;
+        background-color: var(--balloon-color);
+        transform: translateX(-50%);
+      }
+
+      @keyframes fly {
+        0% {
+          bottom: -100px;
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(-30px);
+        }
+        100% {
+          bottom: 120vh;
+          transform: translateX(30px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Flying Balloons -->
+      <div class="balloons" id="balloons-container"></div>
+      <h1>Bara's Birthday Party</h1>
+      <p>Get ready to celebrate!</p>
+    </div>
+
+    <script>
+      // Function to generate balloons dynamically
+      function generateBalloons() {
+        const balloonContainer = document.getElementById("balloons-container");
+        const colors = [
+          "#ff69b4",
+          "#ffb6c1",
+          "#ff4500",
+          "#32cd32",
+          "#ffd700",
+          "#adff2f",
+          "#00fa9a",
+          "#00ff00",
+          "#40e0d0",
+          "#1e90ff",
+          "#4169e1",
+          "#9370db",
+          "#8a2be2",
+          "#dda0dd",
+          "#da70d6",
+          "#ee82ee",
+          "#ffc0cb",
+          "#f08080",
+        ];
+
+        for (let i = 0; i < 50; i++) {
+          const balloon = document.createElement("div");
+          const randomColor = colors[Math.floor(Math.random() * colors.length)];
+          const randomLeft = Math.random() * 100 + "vw";
+          const randomDelay = Math.random() * 5 + "s";
+          const randomDuration = Math.random() * 5 + 5 + "s";
+
+          balloon.classList.add("balloon");
+          balloon.style.setProperty("--balloon-color", randomColor);
+          balloon.style.left = randomLeft;
+          balloon.style.animationDelay = randomDelay;
+          balloon.style.animationDuration = randomDuration;
+
+          balloonContainer.appendChild(balloon);
+        }
+      }
+
+      // Panggil fungsi untuk memulai animasi balon saat halaman dimuat
+      window.onload = generateBalloons;
+    </script>
+  </body>
+</html>

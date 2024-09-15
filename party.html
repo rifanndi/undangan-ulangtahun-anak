@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bara's Birthday Party</title>
+    <style>
+      body {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #e0f7fa;
+        background-image: linear-gradient(90deg, #ffffff 50%, #b3e5fc 50%);
+        background-size: 80px 80px;
+        color: #333;
+        text-align: center;
+        overflow-x: hidden;
+      }
+
+      h1 {
+        font-size: 3rem;
+        color: #439c27;
+      }
+
+      .container {
+        padding: 20px;
+        min-height: 100vh;
+        position: relative;
+      }
+
+      .balloons {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+      }
+
+      .balloon {
+        position: absolute;
+        bottom: -100px;
+        width: 60px;
+        height: 80px;
+        background-color: var(--balloon-color);
+        border-radius: 50%;
+        animation: fly 10s linear infinite;
+      }
+
+      .balloon::before {
+        content: "";
+        position: absolute;
+        top: 70px;
+        left: 50%;
+        width: 2px;
+        height: 40px;
+        background-color: var(--balloon-color);
+        transform: translateX(-50%);
+      }
+
+      @keyframes fly {
+        0% {
+          bottom: -100px;
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(-30px);
+        }
+        100% {
+          bottom: 120vh;
+          transform: translateX(30px);
+        }
+      }
+
+      /* Tambahan styling untuk konten acara */
+      img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+      }
+
+      .rundown-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+      }
+
+      .rundown {
+        position: relative;
+        padding-left: 20px;
+        font-size: 1.2rem;
+        list-style: none;
+        text-align: left;
+        max-width: 500px; /* Membatasi lebar rundown */
+      }
+
+      .rundown::before {
+        content: "";
+        position: absolute;
+        left: 10px; /* Lokasi garis vertikal */
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: #ff69b4; /* Warna garis vertikal */
+      }
+
+      .rundown li {
+        position: relative;
+        padding: 20px 0;
+        padding-left: 40px; /* Spasi di sebelah kiri */
+      }
+
+      .rundown li::before {
+        content: "●";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #ff69b4;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+      }
+
+      iframe {
+        border: none;
+        width: 50%;
+        height: 300px;
+      }
+
+      @media (min-width: 600px) {
+        iframe {
+          height: 450px;
+        }
+      }
+
+      /* Animasi gerak kanan-kiri */
+      @keyframes moveSideToSide {
+        0% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(30px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      .photo {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        transition: transform 0.5s ease, filter 0.5s ease;
+        animation: moveSideToSide 4s ease-in-out infinite; /* Animasi gerak kanan-kiri */
+      }
+
+      /* Efek hover: Membesar dan warna hijau tua menyala */
+      .photo:hover {
+        transform: scale(1.1); /* Membesarkan gambar saat hover */
+        filter: brightness(1.5) sepia(0.9) hue-rotate(90deg); /* Hijau tua menyala */
+      }
+    </style>
+  </head>
+  <body>
+    <audio autoplay loop>
+      <source src="hbd.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <div class="container">
+      <!-- Flying Balloons -->
+      <div class="balloons" id="balloons-container"></div>
+
+      <h1>Welcome to Bara Boy 1st Birthday!</h1>
+      <img src="bara.png" alt="Bara's Birthday" class="photo" />
+      <p>You are invited to celebrate this special day with us.</p>
+
+      <!-- Detail Acara -->
+      <h2>Birthday Party Details</h2>
+      <p>Date: 10 September 2024</p>
+      <p>Time: 17:00</p>
+      <p>Location: ROYAL PALM RESTO & COFFEE KALASAN</p>
+      <p>Dress code: Fun and colorful!</p>
+
+      <!-- Rundown Acara -->
+      <h2>Rundown Acara</h2>
+      <div class="rundown-container">
+        <ul class="rundown">
+          <li>17:00 - Pembukaan</li>
+          <li>17:10 - Doa Bersama</li>
+          <li>17:30 - Potong Kue</li>
+          <li>18:00 - Games dan Hiburan</li>
+          <li>19:00 - Penutupan</li>
+        </ul>
+      </div>
+
+      <!-- Peta Lokasi Menggunakan Google Maps -->
+      <div class="location">
+        <h2>Lokasi Acara</h2>
+        <p>Alamat: Jl. Opak Raya, Krajan, Tirtomartani</p>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d7340.735777973215!2d110.46597209022245!3d-7.769632657782697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x2e7a5bf2bab69b8b%3A0xb6ae89c157d6f318!2sRoyal%20Palm%20Resto%20and%20Coffee%20Kalasan%2C%20Jalan%20Opak%20Raya%2C%20Krajan%2C%20Tirtomartani%2C%20Kabupaten%20Sleman%2C%20Daerah%20Istimewa%20Yogyakarta!3m2!1d-7.7732528!2d110.4704515!4m5!1s0x2e7a5bf2bab69b8b%3A0xb6ae89c157d6f318!2sJl.%20Opak%20Raya%2C%20Krajan%2C%20Tirtomartani%2C%20Kec.%20Kalasan%2C%20Kabupaten%20Sleman%2C%20Daerah%20Istimewa%20Yogyakarta%2055571!3m2!1d-7.7732528!2d110.4704515!5e0!3m2!1sid!2sid!4v1726366407597!5m2!1sid!2sid"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+        <div style="margin-top: 100px">
+          <h2>Thank You!</h2>
+          <p>Thank you for being part of Bara Boy special day!</p>
+          <p>We hope you enjoy the celebration!</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Function to generate balloons dynamically
+      function generateBalloons() {
+        const balloonContainer = document.getElementById("balloons-container");
+        const colors = [
+          "#ff69b4",
+          "#ffb6c1",
+          "#ff4500",
+          "#32cd32",
+          "#ffd700",
+          "#adff2f",
+          "#00fa9a",
+          "#00ff00",
+          "#40e0d0",
+          "#1e90ff",
+          "#4169e1",
+          "#9370db",
+          "#8a2be2",
+          "#dda0dd",
+          "#da70d6",
+          "#ee82ee",
+          "#ffc0cb",
+          "#f08080",
+        ];
+
+        for (let i = 0; i < 50; i++) {
+          const balloon = document.createElement("div");
+          const randomColor = colors[Math.floor(Math.random() * colors.length)];
+          const randomLeft = Math.random() * 100 + "vw";
+          const randomDelay = Math.random() * 5 + "s";
+          const randomDuration = Math.random() * 5 + 5 + "s";
+
+          balloon.classList.add("balloon");
+          balloon.style.setProperty("--balloon-color", randomColor);
+          balloon.style.left = randomLeft;
+          balloon.style.animationDelay = randomDelay;
+          balloon.style.animationDuration = randomDuration;
+
+          balloonContainer.appendChild(balloon);
+        }
+      }
+
+      // Panggil fungsi untuk memulai animasi balon saat halaman dimuat
+      window.onload = generateBalloons;
+    </script>
+  </body>
+</html>

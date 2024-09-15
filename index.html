@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bara's Birthday Party - Welcome</title>
+    <style>
+      body {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #e0f7fa;
+        background-image: linear-gradient(90deg, #ffffff 50%, #b3e5fc 50%);
+        background-size: 80px 80px;
+        color: #333;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 3rem;
+        color: #ffeb3b;
+      }
+
+      .container {
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .button {
+        background-color: #ffeb3b;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 20px;
+      }
+
+      .button:hover {
+        background-color: #fdd835;
+      }
+    </style>
+  </head>
+  <body>
+    <audio autoplay loop>
+      <source src="hbd.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <div class="container">
+      <h1>Welcome to Bara's Birthday!</h1>
+      <p>Click below to enter the party!</p>
+      <button class="button" onclick="goToParty()">Go to Party</button>
+    </div>
+
+    <script>
+      function goToParty() {
+        window.location.href = "party.html"; // Redirect ke halaman kedua
+      }
+    </script>
+  </body>
+</html>
